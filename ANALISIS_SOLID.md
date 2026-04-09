@@ -2,24 +2,24 @@
 
 ## Estructura del proyecto
 
+> Nota: en este repositorio los `.java` estan en la raiz fisica por simplicidad del reto,
+> pero la organizacion logica se mantiene por paquetes (`impresoras.interfaces`,
+> `impresoras.nucleo`, `impresoras.modelos`, `impresoras.infraestructura`).
+
 ```
-src/impresoras/
-├── interfaces/
-│   ├── Imprimible.java        ← ISP: contrato mínimo de impresión
-│   ├── Escaneable.java        ← ISP: contrato mínimo de escaneo
-│   ├── FaxCapaz.java          ← ISP: contrato mínimo de fax
-│   └── Mantenible.java        ← ISP: operaciones de mantenimiento físico
-├── nucleo/
-│   ├── Documento.java         ← SRP: sólo datos del documento
-│   ├── ColaImpresion.java     ← SRP: FIFO pura, sin simulaciones
-│   └── GestorImpresoras.java  ← SRP+OCP: orquesta sin acoplarse a concretas
-├── modelos/
-│   ├── ImpresoraBasica.java         ← ISP+LSP: Imprimible + Mantenible
-│   ├── ImpresoraMultifuncional.java ← ISP+LSP: 4 interfaces, implementación real
-│   └── EscanerEnLaNube.java         ← OCP: NUEVA, sin tocar nada existente
-├── infraestructura/
-│   └── LogSistema.java        ← SRP: sólo registra eventos
-└── Main.java
+files/
+├── Imprimible.java             ← package impresoras.interfaces
+├── Escaneable.java             ← package impresoras.interfaces
+├── FaxCapaz.java               ← package impresoras.interfaces
+├── Mantenible.java             ← package impresoras.interfaces
+├── Documento.java              ← package impresoras.nucleo
+├── ColaImpresion.java          ← package impresoras.nucleo
+├── GestorImpresoras.java       ← package impresoras.nucleo
+├── ImpresoraBasica.java        ← package impresoras.modelos
+├── ImpresoraMultifuncional.java← package impresoras.modelos
+├── EscanerEnLaNube.java        ← package impresoras.modelos
+├── LogSistema.java             ← package impresoras.infraestructura
+└── Main.java                   ← package impresoras
 ```
 
 ---

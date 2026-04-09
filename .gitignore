@@ -1,16 +1,25 @@
 # Java
 out/
 *.class
+*.log
 
 # IDE
 .idea/
+.vs/
+.vscode/
 *.iml
+files.iml
 
 # Node/Vue
 public/snake-vue/node_modules/
 public/snake-vue/dist/
+public/snake-vue/.vite/
 
 # Environment
 .env
 .env.*
+
+# OS
+.DS_Store
+Thumbs.db
 
