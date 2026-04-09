@@ -216,7 +216,7 @@ Con este refactor, el proyecto queda mas limpio y mas profesional:
 - se extiende sin dolor,
 - y se puede sustentar con argumentos de arquitectura aplicada, incluso sin usar lenguaje excesivamente tecnico.
 
-Como soporte visual del trabajo, se mantiene el diagrama de arquitectura en `arquitectura_solid_printcorp.svg`, alineado con los cambios de refactor aplicados.
+Como soporte visual del trabajo, se mantiene el diagrama de arquitectura en `diagramas/arquitectura_solid_printcorp.svg`, alineado con los cambios de refactor aplicados.
 
 ---
 
