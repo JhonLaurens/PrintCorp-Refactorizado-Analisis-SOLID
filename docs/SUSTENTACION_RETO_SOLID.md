@@ -200,6 +200,46 @@ La salida valida que todo el flujo funciona correctamente:
 - reporte final con contadores y log,
 - proceso finalizado con `exit code 0`.
 
+### Lectura del resultado de ejecucion (interpretacion)
+
+En la corrida se ve que el flujo completo funciona de principio a fin:
+
+1. **Inicio de sesion de depuracion (IntelliJ)**
+   - Aparecen mensajes como `Connected to the target VM...` y al final `Disconnected from the target VM...`.
+   - Esto no es un error: solo indica que se ejecuto en modo debug desde el IDE.
+
+2. **Registro de dispositivos correcto**
+   - El gestor registra 2 impresoras (`ImpresoraMultifuncional` y `ImpresoraBasica`) y 2 escaneres (la multifuncional y `EscanerEnLaNube`).
+   - Esto confirma que el gestor trabaja con contratos (`Imprimible` y `Escaneable`) y no con una clase unica gigante.
+
+3. **Cola de documentos operativa**
+   - Se agregan `Reporte Q1` y `Contrato NDA`.
+   - Luego se procesan en orden, lo que valida el comportamiento FIFO de `ColaImpresion`.
+
+4. **Impresion en multiples dispositivos**
+   - La HP imprime por pagina y reporta tinta restante (`90%` y luego `85%`).
+   - La Canon tambien imprime ambos documentos y lleva conteo acumulado (`1`, `2`).
+   - Esto evidencia polimorfismo: un mismo documento se procesa con implementaciones distintas de `Imprimible`.
+
+5. **Escaneo local + escaneo en nube**
+   - La multifuncional escanea el documento.
+   - `EscanerEnLaNube` sube el archivo al bucket `s3://printcorp-docs`.
+   - Esto demuestra la extension del sistema sin romper clases existentes (OCP).
+
+6. **Fax en dispositivo que realmente lo soporta**
+   - Solo la HP envia fax a `3001234567`.
+   - La `ImpresoraBasica` no participa en fax, evitando metodos no soportados (ISP + LSP).
+
+7. **Reporte final coherente**
+   - `Impresoras registradas: 2`
+   - `Escaneres registrados: 2`
+   - `Documentos en cola: 0`
+   - El log muestra la trazabilidad completa: encolado, impresion, escaneo/subida y fax.
+
+8. **Cierre exitoso de ejecucion**
+   - `Process finished with exit code 0` confirma ejecucion sin fallos.
+   - En otras palabras: el refactor no solo mejora arquitectura, tambien mantiene el comportamiento funcional esperado.
+
 ---
 
 ## 9) Como explicaria yo el valor del reto en una sustentacion
