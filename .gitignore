@@ -1,0 +1,16 @@
+# Java
+out/
+*.class
+
+# IDE
+.idea/
+*.iml
+
+# Node/Vue
+public/snake-vue/node_modules/
+public/snake-vue/dist/
+
+# Environment
+.env
+.env.*
+
