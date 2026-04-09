@@ -208,18 +208,7 @@ La salida valida que todo el flujo funciona correctamente:
 
 ---
 
-## 10) Guion corto para exponer (2-3 minutos)
-
-1. Presento el repo base evaluado (`MiniReto`) y su problema inicial.
-2. Explico que no cambiamos el objetivo del reto: mejoramos su estructura interna.
-3. Muestro los ajustes aplicados (interfaces, responsabilidades, log y extension OCP).
-4. Recorro el flujo real de `Main` (registro -> cola -> impresion -> escaneo -> reporte).
-5. Muestro como `EscanerEnLaNube` prueba OCP.
-6. Cierro con el resultado de ejecucion y beneficios de mantenibilidad.
-
----
-
-## 11) Cierre
+## 10) Cierre
 
 Con este refactor, el proyecto queda mas limpio y mas profesional:
 
@@ -227,25 +216,13 @@ Con este refactor, el proyecto queda mas limpio y mas profesional:
 - se extiende sin dolor,
 - y se puede sustentar con argumentos de arquitectura aplicada, incluso sin usar lenguaje excesivamente tecnico.
 
----
-
-## 12) Diagramas recomendados para mejorar la comprension
-
-Para sustentar mejor este reto (repo base + refactor), recomiendo usar estos diagramas en este orden:
-
-1. **Diagrama de contexto (alto nivel)**: para explicar rapido de que trata el sistema.
-2. **Diagrama de capas/componentes**: para mostrar como quedo organizada la arquitectura.
-3. **Diagrama de clases (interfaces y modelos)**: para evidenciar ISP, LSP y OCP.
-4. **Diagrama de secuencia**: para mostrar el flujo real de ejecucion en `Main`.
-5. **Diagrama antes vs despues**: para justificar por que el refactor si agrega valor.
-
-> Ya tenemos una base visual en `arquitectura_solid_printcorp.svg`. Estos diagramas lo complementan para que la explicacion sea mas clara para jurado o equipo.
+Como soporte visual del trabajo, se mantiene el diagrama de arquitectura en `arquitectura_solid_printcorp.svg`, alineado con los cambios de refactor aplicados.
 
 ---
 
-## 13) Plantillas listas para usar (Mermaid)
+## 11) Anexo - Diagramas generados (Mermaid)
 
-### 13.1 Contexto rapido del sistema
+### 11.1 Diagrama de contexto
 
 ```mermaid
 flowchart LR
@@ -256,7 +233,7 @@ flowchart LR
 	Sistema --> Logs[LogSistema]
 ```
 
-### 13.2 Capas de arquitectura aplicada
+### 11.2 Diagrama de capas
 
 ```mermaid
 flowchart TB
@@ -266,7 +243,7 @@ flowchart TB
 	Nucleo --> Infra[Infraestructura: LogSistema]
 ```
 
-### 13.3 Flujo principal de ejecucion
+### 11.3 Diagrama de secuencia
 
 ```mermaid
 sequenceDiagram
@@ -291,7 +268,7 @@ sequenceDiagram
 	G->>L: mostrar()
 ```
 
-### 13.4 Antes vs despues (mensaje de valor)
+### 11.4 Diagrama antes vs despues
 
 ```mermaid
 flowchart LR
@@ -303,15 +280,4 @@ flowchart LR
 	B --> B2[Responsabilidades claras por clase]
 	B --> B3[Extension limpia con EscanerEnLaNube]
 ```
-
----
-
-## 14) Recomendacion para exponer estos diagramas
-
-- Empieza por contexto (30 segundos) para ubicar al jurado.
-- Sigue con capas (1 minuto) para mostrar orden arquitectonico.
-- Muestra secuencia (1 minuto) para validar que el flujo funciona.
-- Cierra con antes vs despues (30-45 segundos) para justificar el impacto del refactor.
-
-Con eso tienes una narrativa visual simple, profesional y facil de defender.
 
